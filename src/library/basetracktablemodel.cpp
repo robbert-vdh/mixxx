@@ -725,12 +725,19 @@ QVariant BaseTrackTableModel::roleValue(
                     bpm = mixxx::Bpm(bpmValue);
                 }
             }
+
             if (bpm.isValid()) {
+                const double value = bpm.value();
+
                 if (role == Qt::ToolTipRole || role == kDataExportRole) {
-                    return QString::number(bpm.value(), 'f', 4);
+                    return QString::number(value, 'f', 4);
+                } else if (std::round(value) != value) {
+                    // Tracks with non-integer tempos should be more visible in
+                    // the table as this may be an error
+                    return QString::number(value, 'f', 2);
                 } else {
                     // custom precision, set in DlgPrefLibrary
-                    return QString::number(bpm.value(), 'f', s_bpmColumnPrecision);
+                    return QString::number(value, 'f', s_bpmColumnPrecision);
                 }
             } else {
                 return QChar('-');

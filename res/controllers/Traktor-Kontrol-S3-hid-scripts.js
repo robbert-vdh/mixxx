@@ -86,10 +86,10 @@ TraktorS3.SixteenSamplers = false;
 // PURPLE, FUCHSIA, MAGENTA, AZALEA, SALMON, WHITE
 // Some colors may look odd because of how they are encoded inside the controller.
 TraktorS3.ChannelColors = {
-    "[Channel1]": "CARROT",
-    "[Channel2]": "CARROT",
-    "[Channel3]": "BLUE",
-    "[Channel4]": "BLUE"
+    "[Channel1]": "BLUE",
+    "[Channel2]": "BLUE",
+    "[Channel3]": "CARROT",
+    "[Channel4]": "CARROT"
 };
 
 // Each color has four brightnesses, so these values can be between 0 and 3.
@@ -109,13 +109,13 @@ TraktorS3.Beta = TraktorS3.Alpha / 32;
 // These options can be set to non-null values to initialize the beat jump and
 // loop sizes and sync and quantize states for all four decks when the
 // controller is connected
-TraktorS3.DefaultBeatJumpSize = null; // 32
-TraktorS3.DefaultBeatLoopLength = null; // 32
-TraktorS3.DefaultSyncEnabled = null; // true
-TraktorS3.DefaultQuantizeEnabled = null; // true
-TraktorS3.DefaultKeylockEnabled = null; // true
+TraktorS3.DefaultBeatJumpSize = 32; // 32
+TraktorS3.DefaultBeatLoopLength = 32; // 32
+TraktorS3.DefaultSyncEnabled = true; // true
+TraktorS3.DefaultQuantizeEnabled = true; // true
+TraktorS3.DefaultKeylockEnabled = true; // true
 // -1 for left, 0 for center/not assigned, 1 for right
-TraktorS3.DefaultCrossfaderAssignments = [null, null, null, null]; // [0, 0, 0, 0]
+TraktorS3.DefaultCrossfaderAssignments = [0, 0, 0, 0]; // [0, 0, 0, 0]
 
 // Set to true to output debug messages and debug light outputs.
 TraktorS3.DebugMode = false;

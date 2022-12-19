@@ -480,6 +480,11 @@ void WTrackMenu::createActions() {
             slotScaleBpm(mixxx::Beats::BpmScale::ThreeHalves);
         });
 
+        m_pBpmRoundAction = new QAction(tr("Round BPM"), m_pBPMMenu);
+        connect(m_pBpmRoundAction, &QAction::triggered, this, [this] {
+            slotScaleBpm(mixxx::Beats::BpmScale::Round);
+        });
+
         m_pBpmResetAction = new QAction(tr("Reset BPM"), m_pBPMMenu);
         connect(m_pBpmResetAction,
                 &QAction::triggered,
@@ -599,6 +604,7 @@ void WTrackMenu::setupActions() {
         m_pBPMMenu->addAction(m_pBpmLockAction);
         m_pBPMMenu->addAction(m_pBpmUnlockAction);
         m_pBPMMenu->addSeparator();
+        m_pBPMMenu->addAction(m_pBpmRoundAction);
         m_pBPMMenu->addAction(m_pBpmResetAction);
         m_pBPMMenu->addSeparator();
 
@@ -963,6 +969,7 @@ void WTrackMenu::updateMenus() {
             m_pBpmThreeFourthsAction->setEnabled(!anyBpmLocked);
             m_pBpmFourThirdsAction->setEnabled(!anyBpmLocked);
             m_pBpmThreeHalvesAction->setEnabled(!anyBpmLocked);
+            m_pBpmRoundAction->setEnabled(!anyBpmLocked);
             m_pBpmResetAction->setEnabled(!anyBpmLocked);
 
             // Append scaled BPM preview for single selection

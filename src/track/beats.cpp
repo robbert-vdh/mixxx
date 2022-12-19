@@ -649,6 +649,17 @@ std::optional<BeatsPointer> Beats::tryScale(BpmScale scale) const {
     case BpmScale::ThreeHalves:
         scaleFactor *= 3.0 / 2;
         break;
+    case BpmScale::Round: {
+        const double bpm = m_lastMarkerBpm.value();
+        if (m_lastMarkerBpm.isValid() && bpm != 0.0) {
+            // TODO: This only makes sense with constant tempos, should we just
+            //       abort if there are multiple tempo markers?
+            scaleFactor *= std::round(bpm) / bpm;
+        } else {
+            qWarning() << "Cannot round a bpm value that has not yet been set.";
+            return std::nullopt;
+        }
+    } break;
     default:
         DEBUG_ASSERT(!"scale value invalid");
         return nullptr;
@@ -670,6 +681,12 @@ std::optional<BeatsPointer> Beats::tryScale(BpmScale scale) const {
     }
 
     Bpm lastMarkerBpm = m_lastMarkerBpm * scaleFactor;
+    if (scale == BpmScale::Round) {
+        // Because of floating point rounding errors we there may be situations
+        // where `x * (round(x) / x) != round(x)`, so just to be sure we'll
+        // round the value again
+        lastMarkerBpm.setValue(std::round(lastMarkerBpm.value()));
+    }
 
     return BeatsPointer(new Beats(markers,
             m_lastMarkerPosition,

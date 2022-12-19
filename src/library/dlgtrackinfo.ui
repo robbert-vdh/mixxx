@@ -865,23 +865,43 @@ Often results in higher quality beatgrids, but will not do well on tracks that h
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="bpmClear">
-         <property name="text">
-          <string>Clear BPM and Beatgrid</string>
-         </property>
-        </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+             <widget class="QPushButton" name="bpmRound">
+               <property name="minimumSize">
+                 <size>
+                   <width>250</width>
+                   <height>0</height>
+                 </size>
+               </property>
+               <property name="toolTip">
+                 <string>Round the BPM to the nearest integer value.</string>
+               </property>
+               <property name="text">
+                 <string>Round BPM</string>
+               </property>
+             </widget>
+           </item>
+           <item>
+             <widget class="QPushButton" name="bpmClear">
+               <property name="text">
+                 <string>Clear BPM and Beatgrid</string>
+               </property>
+             </widget>
+           </item>
+         </layout>
        </item>
        <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Hint: Use the Library Analyze view to run BPM detection.</string>
-         </property>
-        </widget>
+         <widget class="QLabel" name="label">
+           <property name="text">
+             <string>Hint: Use the Library Analyze view to run BPM detection.</string>
+           </property>
+         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+         <spacer name="verticalSpacer">
+           <property name="orientation">
+             <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>

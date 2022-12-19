@@ -271,6 +271,8 @@ class Beats : private std::enable_shared_from_this<Beats> {
         ThreeFourths,
         FourThirds,
         ThreeHalves,
+        /// Finds the nearest integer BPM value.
+        Round,
     };
 
     /// Returns false if the beats implementation supports non-const beats.

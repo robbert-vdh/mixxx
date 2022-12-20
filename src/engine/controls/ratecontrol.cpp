@@ -164,17 +164,17 @@ RateControl::RateControl(const QString& group,
     m_pJog = new ControlObject(ConfigKey(group, "jog"));
     m_pJogFilter = new Rotary();
     // FIXME: This should be dependent on sample rate/block size or something
-    m_pJogFilter->setFilterLength(25);
+    m_pJogFilter->setFilterLength(10);
 
-//     // Update Internal Settings
-//     // Set Pitchbend Mode
-//     m_eRateRampMode = static_cast<RampMode>(
-//         getConfig()->getValue(ConfigKey("[Controls]","RateRamp"),
-//                               static_cast<int>(RampMode::Stepping)));
+    //     // Update Internal Settings
+    //     // Set Pitchbend Mode
+    //     m_eRateRampMode = static_cast<RampMode>(
+    //         getConfig()->getValue(ConfigKey("[Controls]","RateRamp"),
+    //                               static_cast<int>(RampMode::Stepping)));
 
-//     // Set the Sensitivity
-//     m_iRateRampSensitivity =
-//             getConfig()->getValueString(ConfigKey("[Controls]","RateRampSensitivity")).toInt();
+    //     // Set the Sensitivity
+    //     m_iRateRampSensitivity =
+    //             getConfig()->getValueString(ConfigKey("[Controls]","RateRampSensitivity")).toInt();
 
     m_pSyncMode = new ControlProxy(group, "sync_mode", this);
 }
